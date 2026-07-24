@@ -10,6 +10,15 @@ import { join } from 'node:path';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self' http://localhost:4200 ws://localhost:4200; connect-src 'self' http://localhost:4200 ws://localhost:4200 http://localhost:4200/.well-known/appspecific/com.chrome.devtools.json; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
+  );
+  next();
+});
+
 const angularApp = new AngularNodeAppEngine();
 
 /**

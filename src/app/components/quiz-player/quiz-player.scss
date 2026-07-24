@@ -1,0 +1,97 @@
+:host {
+    view-transition-name: active-quiz-card;
+}
+
+.tests-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5rem;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: rgba(184, 184, 184, 0.278);
+
+    .previewTest {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 0.5rem;
+        border: 2px solid black;
+        border-radius: 0.5rem;
+
+        .test-header {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .question {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 0.5rem;
+            background-color: rgba(239, 240, 240, 0.585);
+            box-shadow: 0.0rem 0.5rem 0.3rem rgba(0, 0, 0, 0.278);
+            border-radius: 0.25rem;
+
+            label {
+                width: 100%;
+                text-align: center;
+                border-bottom: 0.1rem solid black;
+                font-weight: bolder;
+            }
+
+            .answers {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                border-bottom: 0.1rem solid black;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 50%;
+
+        .btn {
+            padding: 0.25rem;
+            text-align: center;
+            font-size: 1rem;
+            border: 1px solid black;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: white;
+            }
+        }
+
+        .saveBtn {
+            background-color: rgba(255, 140, 0, 0.369);
+
+            &:hover {
+                background-color: darkorange;
+            }
+        }
+
+        .editeBtn {
+            background-color: rgba(0, 0, 139, 0.332);
+
+            &:hover {
+                background-color: darkblue;
+            }
+        }
+    }
+}

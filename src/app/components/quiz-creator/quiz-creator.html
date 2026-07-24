@@ -1,0 +1,120 @@
+<div class="tests-contain">
+
+    @for (test of tests.controls; track $index; let testIndex = $index) {
+        <div 
+            [class.delete]="indexDeleteTest.includes($index)"
+            [formGroup]="getTestGroup(testIndex)" 
+            class="testCard"
+            >
+
+            <div class="head">
+                <h3>{{test.get('testName')?.value || 'Тест №' + ($index + 1)}}</h3>
+                <button 
+                    type="button"
+                    (click)="deleteTest(getTestGroup(testIndex))"
+                    >
+                    <img src="free-icon-close-page-9055079.png" alt="" width="12px">
+                </button>
+            </div>
+            
+
+            <div class="nameTest">
+                <label>Название теста:</label>
+                <input 
+                    type="text" 
+                    formControlName="testName" 
+                    placeholder="Введите название..."
+                >
+            </div>
+            
+            <div formArrayName="questions" class="quest-list">
+                @for (quest of getQuestionsArray(testIndex).controls; track $index; let questIndex = $index) {
+                    <div [formGroupName]="questIndex"
+                        class="quest-card"
+                        [class.delete]="isQuestDelet(testIndex, questIndex)"
+                        >
+                        <div class="quest">
+                            <input type="text" formControlName="questText" placeholder="Вопрос...">
+                            <div formArrayName="answers" class="answer-cont">
+                                @for(answer of getAnswerArray(questIndex, testIndex).controls; track $index; let answerIndex = $index) {
+                                    <div 
+                                        [formGroupName]="answerIndex" 
+                                        class="answer-list"
+                                        [class.delete]="isAnswerDelet(questIndex, answerIndex)"
+                                        >
+                                        <input type="text" formControlName="answerText" placeholder="Введите ответ...">
+
+                                        <div class="correctAnswer">
+
+                                            <button 
+                                                type="button" 
+                                                class="correctAnswerBtn"
+                                                (click)="trueAnswer(testIndex, questIndex, answerIndex)"
+                                                [class.active]="answer.get('isCorrect')?.value"
+                                                >
+                                                True
+                                            </button>
+
+                                            <button 
+                                                type="button" 
+                                                class="deleteAnswer"
+                                                (click)="deleteAnswer(testIndex, questIndex, answerIndex)"
+                                                >
+                                                <img src="free-icon-close-page-9055079.png" alt="" width="10px">
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="createBtn createBtnQuest createBtnAnswer">
+                                    <button 
+                                        type="button"
+                                        class="crtBtn"
+                                        (click)="addAnswer(testIndex, questIndex)"
+                                        >
+                                        + Create Answer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="createBtn deleteQuest">
+                            <button 
+                                type="button"
+                                class="crtBtn"
+                                (click)="deleteQuestion(testIndex, questIndex)"
+                                >
+                                Delete Question
+                            </button>
+                        </div>
+                    </div>
+                }
+                <div class="createBtn createBtnQuest">
+                    <button 
+                        type="button"
+                        class="crtBtn"
+                        (click)="addQuestion(testIndex)"
+                        >
+                        + Create Question
+                    </button>
+
+                    <button 
+                        type="button"
+                        class="crtBtn prwBtn"
+                        (click)="onPreview(testIndex)"
+                        >
+                        Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="createBtn">
+        <button 
+            type="button"
+            class="crtBtn"
+            (click)="addTest()"
+            >
+            + Create Test
+        </button>
+    </div>
+
+</div>

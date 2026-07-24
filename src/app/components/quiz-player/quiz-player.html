@@ -1,0 +1,42 @@
+<div class="tests-container">
+    @if (testData$ | async; as testData) {
+        <div class="previewTest">
+            <header class="test-header">
+                <h3>{{ testData.testName }}</h3>
+                <p>Всего вопросов: {{ testData.questions.length }}</p>
+            </header>
+            
+            @for (question of testData.questions; track $index; let questIn = $index) {
+                <div class="question">
+                    <label>{{ question.questText }}:</label>
+                    @for (answer of question.answers; track $index; let answerIn = $index) {
+                        <div class="answers">
+                            <input 
+                                type="radio" 
+                                [name]="'question -' + questIn"
+                                [value]="answer.answerText"
+                                >
+                            <span>{{ answer.answerText }}</span>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="buttons">
+                <button 
+                    type="button" 
+                    class="btn saveBtn"
+                    (click)="saveTest()"
+                    >
+                    Save Test
+                </button>
+                <button 
+                    type="button" 
+                    class="btn editeBtn"
+                    (click)="backEdite()"
+                    >
+                    Edite Test
+                </button>
+            </div>
+        </div>
+        }
+</div>

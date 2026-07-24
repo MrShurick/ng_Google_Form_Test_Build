@@ -1,0 +1,38 @@
+<div class="container-tests">
+    @if (saveTests$ | async; as tests) {
+        @for (test of tests; track $index; let testIn = $index) {
+            <div class="test" [class.delete]="getDeleteTest(test.testIndex)">
+                <div class="deleteDiv">
+                    <button 
+                        type="button" 
+                        class="deleteBtn"
+                        (click)="deleteTest(test.testIndex)"
+                        >
+                        <img src="free-icon-close-page-9055079.png" alt="" width="12">
+                    </button>
+                </div>
+
+                <header class="headerTest">
+                    <h3>{{ test.testName }}</h3>
+                    <p>Количество вопросов: {{ test.questions.length }}</p>
+                </header>
+
+                @for (question of test.questions; track $index; let questIn = $index) {
+                    <div class="quest">
+                        <label>{{ question.questText }}</label>
+                        @for (answer of question.answers; track $index; let answerIn = $index) {
+                            <div class="answers">
+                                <input 
+                                    type="radio"
+                                    [name]="'question' + questIn"
+                                    [value]="answer.answerText"
+                                    >
+                                    <span>{{ answer.answerText }}</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>
