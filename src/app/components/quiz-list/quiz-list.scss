@@ -4,6 +4,7 @@
     justify-content: start;
     align-items: center;
     padding: 0.5rem;
+    gap: 1rem;
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
@@ -15,9 +16,11 @@
         align-items: center;
         width: 100%;
         margin: 0.5rem 0.5rem;
-        padding: 0.5rem;
-        border: 2px solid black;
+        padding: 1rem;
         border-radius: 0.5rem;
+        background-color: rgba(249, 249, 249, 0.557);
+        box-shadow: 0.0rem 0.2rem 0.5rem rgba(0, 0, 0, 0.431);
+        transition: width 0.5s ease;
 
         &.delete {
             animation: delete 0.4s ease-in-out both;
@@ -43,6 +46,7 @@
             display: grid;
             justify-items: center;
             align-items: center;
+            gap: 0.5rem;
             width: 100%;
         }
 
@@ -50,7 +54,7 @@
             display: grid;
             justify-items: center;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             width: 100%;
             margin: 0.5rem 0.5rem;
             padding: 0.5rem;
@@ -60,6 +64,7 @@
 
             label {
                 width: 100%;
+                padding: 0.5rem;
                 text-align: center;
                 border-bottom: 0.1rem solid black;
                 font-weight: bolder;
@@ -71,6 +76,7 @@
                 align-items: center;
                 width: 100%;
                 gap: 0.25rem;
+                padding: 0.5rem;
                 border-bottom: 0.1rem solid black;
             }
         }
@@ -95,5 +101,43 @@
         margin-bottom: 0;
         box-shadow: none;
         border: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .container-tests {
+        
+        .test {
+            width: 75%;
+            font-size: 1.2rem;
+            transition: width 0.5s ease;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .container-tests {
+
+        .test {
+            width: 75%;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container-tests {
+        
+        .test {
+            width: 50%;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-tests {
+        
+        .test {
+            width: 50%;
+        }
     }
 }

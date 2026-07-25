@@ -7,11 +7,13 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    gap: 1rem;
     padding: 0.5rem;
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
     background-color: rgba(184, 184, 184, 0.278);
+    transition: gap 0.5s ease-in-out;
 
     .createBtn button {
         padding: 0.2rem;
@@ -38,8 +40,9 @@
         width: 100%;
         padding: 0.5rem;
         margin: 0.25rem 0;
-        border: 2px solid black;
         border-radius: 0.5rem;
+        background-color: rgba(249, 249, 249, 0.557);
+        box-shadow: 0.0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.431);
         transition: 
             scroll-bar 0.5s ease-in-out,
             width 0.5s ease-in-out,
@@ -104,7 +107,7 @@
                 width: 100%;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgba(239, 240, 240, 0.585);
+                background-color: rgba(249, 249, 249, 0.557);
                 box-shadow: 0.0rem 0.5rem 0.3rem rgba(0, 0, 0, 0.278);
                 overflow: hidden;
                 transition: 
@@ -250,6 +253,7 @@
                 color: white;
                 font-size: 1rem;
                 background-color: rgba(0, 0, 139, 0.648);
+                box-shadow: 0.0rem 0.2rem 0.5rem rgba(0, 0, 0, 0.431);
             }
         }
     }
@@ -289,7 +293,7 @@
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
-        margin-bottom: 0;
+        margin-bottom: -1rem;
         box-shadow: none;
         border: none;
     }
